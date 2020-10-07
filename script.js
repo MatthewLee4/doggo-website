@@ -3,7 +3,14 @@ fetch('https://dog.ceo/api/breeds/list')
         return response.json();
     })
     .then(function(data){
-        console.log(data);
+        let breeds = data.message;
+        let breedList = document.getElementById('breed-list');
+        breeds.forEach(function(breed){
+            let breedElement = document.createElement('option');
+            breedElement.setAttribute('value', breed);
+            breedElement.innerHTML = breed;
+            breedList.appendChild(breedElement);
+        })
     })
 
 
